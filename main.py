@@ -30,6 +30,17 @@ def get_next_open_row(board , col):     #Gets the next open row where the piece 
 def print_flipped_board(board):         #Flips the board and prints it so that it looks like the one in eal world
     print(np.flip(board , 0))
 
+def check_win(board):
+    for c in range(Col-3):              #Checking for Horizontal 4s
+        for r in range(Row):
+            if(board[r][c] == board[r][c+1] == board[r][c+2] == board[r][c+3] == 1):
+                print('\n\n\t\t\tPlayer 1 Wins!\n\n')
+                return True
+            elif(board[r][c] == board[r][c+1] == board[r][c+2] == board[r][c+3] == 1):
+                print('\n\n\t\t\tPlayer 2 Wins!\n\n')
+                return True   
+    
+
 
 board = gen_board()                     #generated a board
 
@@ -47,11 +58,13 @@ while not GameOver:                     #Unless Game Over
         if is_loc_valid(board , move1):
             row = get_next_open_row(board , move1)      #Gets the next Row where the piece needs to go
             ins_piece(board , row , move1 , 1)          #Inserts the piece in that particular row x column
+            GameOver = check_win(board)
         else:
             print("Invalid Move, Please Enter Again")   #Invalid move played by Player 1
             # turn += 1
             continue                                    #Play the current turn again
-        print_flipped_board(board)
+        if not GameOver:
+            print_flipped_board(board)
 
     else:                               #Playe Two's Turn
         move2 = int(input("\n Turn No : " + str(turn) + "\tEnter your move Player Two\t")) - 1
@@ -63,6 +76,9 @@ while not GameOver:                     #Unless Game Over
             print("Invalid Move, Please Enter Again")
             # turn += 1
             continue
-        print_flipped_board(board)
+        if not GameOver:    
+            print_flipped_board(board)
+
+    
 
     turn += 1
