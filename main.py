@@ -1,7 +1,7 @@
 import numpy as np
 
-def gen_board():                         #generates board of 6 X 6
-    board = np.zeros((6,6))
+def gen_board(row = 6 , col = 6):                         #generates board of 6 X 6 by default
+    board = np.zeros((row,col))
     return board
 
 def drop_piece():
@@ -12,7 +12,7 @@ def is_loc_valid():
 
 def get_next_open_row():
     pass
-    
+
 
 board = gen_board()                     #generated a board
 
