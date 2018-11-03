@@ -51,6 +51,23 @@ def check_win(board):
                 print('\n\n\t\t\tPlayer 2 Wins!\n\n')
                 return True 
 
+    for c in range(Col-3):              #Checking for Diagonal Up 4s
+        for r in range(Row-3):
+            if(board[r][c] == board[r+1][c+1] == board[r+2][c+2] == board[r+3][c+3] == 1):
+                print('\n\n\t\t\tPlayer 1 Wins!\n\n')
+                return True
+            elif(board[r][c] == board[r+1][c+1] == board[r+2][c+2] == board[r+3][c+3] == 2):
+                print('\n\n\t\t\tPlayer 2 Wins!\n\n')
+                return True
+
+    for c in range(Col-3):              #Checking for Diagonal Down 4s
+        for r in range(3 , Row):
+            if(board[r][c] == board[r-1][c+1] == board[r-2][c+2] == board[r-3][c+3] == 1):
+                print('\n\n\t\t\tPlayer 1 Wins!\n\n')
+                return True
+            elif(board[r][c] == board[r-1][c+1] == board[r-2][c+2] == board[r-3][c+3] == 2):
+                print('\n\n\t\t\tPlayer 2 Wins!\n\n')
+                return True
 
 board = gen_board()                     #generated a board
 
