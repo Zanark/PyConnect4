@@ -38,8 +38,16 @@ def check_win(board):
                 return True
             elif(board[r][c] == board[r][c+1] == board[r][c+2] == board[r][c+3] == 1):
                 print('\n\n\t\t\tPlayer 2 Wins!\n\n')
-                return True   
-    
+                return True
+
+    for c in range(Col):              #Checking for Horizontal 4s
+        for r in range(Row-3):
+            if(board[r][c] == board[r+1][c] == board[r+2][c] == board[r+3][c] == 1):
+                print('\n\n\t\t\tPlayer 1 Wins!\n\n')
+                return True
+            elif(board[r][c] == board[r+1][c] == board[r+2][c] == board[r+3][c] == 1):
+                print('\n\n\t\t\tPlayer 2 Wins!\n\n')
+                return True 
 
 
 board = gen_board()                     #generated a board
