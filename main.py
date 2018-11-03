@@ -35,7 +35,7 @@ turn = 1                                #Turn Counter
 while not GameOver:                     #Unless Game Over
 
     if( turn % 2 != 0):                 #Player One's Turn
-        move1 = int(input("Enter your move Player One\t"))
+        move1 = int(input("Enter your move Player One\t")) - 1
         print("\n Player One's move : " + str(move1) + "\n\n")
         if is_loc_valid(board , move1):
             row = get_next_open_row(board , move1)
@@ -43,7 +43,7 @@ while not GameOver:                     #Unless Game Over
         print(board)
 
     else:                               #Playe Two's Turn
-        move2 = int(input("Enter your move Player Two\t"))
+        move2 = int(input("Enter your move Player Two\t")) - 1
         print(" Player Two's move : " + str(move2) + "\n\n")
         if is_loc_valid(board , move2):
             row = get_next_open_row(board , move2)
