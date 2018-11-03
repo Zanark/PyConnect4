@@ -27,8 +27,10 @@ def get_next_open_row(board , col):     #Gets the next open row where the piece 
             return r
     return False        
 
-def print_flipped_board(board):         #Flips the board and prints it so that it looks like the one in eal world
+def print_flipped_board(board , tabs = "\t" , nl = "\n"):         #Flips the board and prints it so that it looks like the one in eal world
+    print(nl + tabs)
     print(np.flip(board , 0))
+    print(nl)
 
 def check_win(board):
     for c in range(Col-3):              #Checking for Horizontal 4s
@@ -36,7 +38,7 @@ def check_win(board):
             if(board[r][c] == board[r][c+1] == board[r][c+2] == board[r][c+3] == 1):
                 print('\n\n\t\t\tPlayer 1 Wins!\n\n')
                 return True
-            elif(board[r][c] == board[r][c+1] == board[r][c+2] == board[r][c+3] == 1):
+            elif(board[r][c] == board[r][c+1] == board[r][c+2] == board[r][c+3] == 2):
                 print('\n\n\t\t\tPlayer 2 Wins!\n\n')
                 return True
 
@@ -45,7 +47,7 @@ def check_win(board):
             if(board[r][c] == board[r+1][c] == board[r+2][c] == board[r+3][c] == 1):
                 print('\n\n\t\t\tPlayer 1 Wins!\n\n')
                 return True
-            elif(board[r][c] == board[r+1][c] == board[r+2][c] == board[r+3][c] == 1):
+            elif(board[r][c] == board[r+1][c] == board[r+2][c] == board[r+3][c] == 2):
                 print('\n\n\t\t\tPlayer 2 Wins!\n\n')
                 return True 
 
@@ -80,13 +82,17 @@ while not GameOver:                     #Unless Game Over
         if is_loc_valid(board , move2):
             row = get_next_open_row(board , move2)
             ins_piece(board , row , move2 , 2)
+            GameOver = check_win(board)
         else:
             print("Invalid Move, Please Enter Again")
             # turn += 1
             continue
         if not GameOver:    
-            print_flipped_board(board)
+            print_flipped_board(board , "\t\t\t\t" , "\n\n")
 
     
 
     turn += 1
+
+
+print_flipped_board(board)
