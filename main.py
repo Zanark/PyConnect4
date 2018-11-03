@@ -6,25 +6,26 @@ Col = 6
 def gen_board(row = 6 , col = 6):                         #generates board of 6 X 6 by default
     board = np.zeros((row,col))
     global Row 
-    Row = row-1
+    Row = row
     global Col 
-    Col = col-1
+    Col = col
     return board
 
 def ins_piece(board , row , col , piece):
     board[row][col] = piece
 
 def is_loc_valid(board , col):
-    if (col <= Col):
-        if(board[Row][col]) == 0:
+    if (col <= Col-1):
+        if(board[Row-1][col]) == 0:
             return True
     else:
         return False
 
 def get_next_open_row(board , col):
-    for r in range(Row):
+    for r in range(Row-1):
         if board[r][col] == 0:
             return r
+    return False        
 
 def print_flipped_board(board):
     print(np.flip(board , 0))
